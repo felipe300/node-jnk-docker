@@ -1,17 +1,23 @@
 pipeline {
 	agent any
+  tools {
+    nodejs 'NodeJS'
+  }
 
 	stages {
 		stage('Checkout GitHub'){
 			steps {
+        git branch: 'main', credentialsId: 'node-docker-jenkins', url: 'https://github.com/felipe300/node-jnk-docker.git'
 			}
 		}		
 		stage('Install node dependencies'){
 			steps {
+        sh 'npm install'
 			}
 		}
 		stage('Test Code'){
 			steps {
+        sh 'npm test'
 			}
 		}
 	}
