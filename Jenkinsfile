@@ -20,6 +20,19 @@ pipeline {
         sh 'npm test'
 			}
 		}
+    stage('Build Docker Image'){
+			steps {
+        script {
+          // dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
+          docker.build("node-docker-jenkins")
+        }
+			}
+		}
+		//   stage('Trivy Scan'){
+		// 	steps {
+		//       sh 'trivy ${DOCKER_HUB_REPO}:latest'
+		// 	}
+		// }
 	}
 
 	post {

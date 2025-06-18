@@ -7,6 +7,10 @@ app.get("/", (_, res) => {
 	res.send("Hello World! From Docker & Jenkins!");
 });
 
+app.get("", (_, res) => {
+	res.send("aaaaaaaaaaa");
+});
+
 app.listen(PORT, () => {
 	console.log(`Running on port: ${PORT}`);
 });
